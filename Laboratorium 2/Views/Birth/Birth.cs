@@ -9,7 +9,15 @@ namespace Laboratorium_2.Views.Birth
 
         public double Calculate()
         {
-            return DateTime.Now.Year - birth.Year;
+            DateTime currentDate = DateTime.Now;
+            int years = currentDate.Year - birth.Year;
+
+            if (currentDate.Month < birth.Month || (currentDate.Month == birth.Month && currentDate.Day < birth.Day))
+            {
+                years--;
+            }
+
+            return years;
         }
     }
 }
